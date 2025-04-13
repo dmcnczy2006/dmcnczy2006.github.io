@@ -6,6 +6,12 @@ https://www.tooplate.com/view/2135-mini-finance
 
 */
 
+@font-face {
+  font-display: block;
+  font-family: "HarmonyOS Sans SC";
+  src: url("../fonts/HarmonyOS_Sans_SC.ttf");
+}
+
 /*---------------------------------------
   CUSTOM PROPERTIES ( VARIABLES )             
 -----------------------------------------*/
@@ -23,7 +29,7 @@ https://www.tooplate.com/view/2135-mini-finance
   --border-color:                 #e0e0e5;
   --link-hover-color:             #E63946;
 
-  --body-font-family:             'Unbounded';
+  --body-font-family:             'HarmonyOS Sans SC';
 
   --h1-font-size:                 74px;
   --h2-font-size:                 46px;
