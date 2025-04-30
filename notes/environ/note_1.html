@@ -16,13 +16,13 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="/css/bootstrap-icons.css" rel="stylesheet">
 
-    <link href="css/apexcharts.css" rel="stylesheet">
+    <link href="/css/apexcharts.css" rel="stylesheet">
 
-    <link href="css/tooplate-mini-finance.css" rel="stylesheet">
+    <link href="/css/tooplate-mini-finance.css" rel="stylesheet">
 
     <!-- Favicon.ico -->
     <link rel="icon" href="/favicon.ico">
@@ -167,493 +167,305 @@ Bootstrap 5 Dashboard Admin Template
 
         <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
           <div class="title-group mb-3">
-            <h1 class="h2 mb-0">Wallet</h1>
+            <h1 class="h2 mb-0">大气污染背景下空气质量模型的应用与创新简述</h1>
           </div>
 
           <div class="row my-4">
             <div class="col-lg-12 col-12">
               <div class="custom-block bg-white">
-                <h5 class="mb-4">Information Technology Notes for Zhejiang <i>Gaokao</i> 浙江高考《信息技术》笔记</h5>
+    
+    <div class="abstract">
+        <p class="mt-2 mb-2"><strong>摘要：</strong>目前我国乃至世界仍然面临大气污染问题，且这些问题体现跨区域和复合等特征，相比以往的大气污染治理更需要系统性的思路。空气质量模型综合运用了数学、物理、化学、气象学、信息学等多方面科学原理，对不同空间尺度的大气污染物在大气中的时空演变进行模拟，有利于对大气污染的机理与成因的研究，同时被广泛应用于大气污染治理的各领域。同时，空气质量模型的创新也随着对大气复合污染理解的深入不断推进。本文梳理了：（1）目前大气污染的复杂特征；（2）空气质量模型的不同类型；（3）空气质量模型的不同应用领域；（4）空气质量模型的一些创新点，对空气质量模型的发展与它对大气污染问题解决的意义做简要探讨。</p>
+        <p class="mt-2 mb-2"><span class="keywords">关键词：</span>大气环境；大气污染；空气质量模型</p>
+    </div>
+
+    <h2>1 大气污染——空气质量模型创新的研究背景</h2>
+    
+    <h3>1.1 跨区域大气污染问题</h3>
+    <p class="mt-2 mb-2">由于大气循环和气象等因素，大气污染物具有强流动性，其跨区域输送使得某一地区排放的污染物影响周边地区。PM<sub>2.5</sub>的跨区域乃至跨国传输的体量大小以及环境代价随着研究的深入而不断明晰<sup>[1-3]</sup>。例如，Yang等<sup>[3]</sup>的研究认为，2010年，华北四省（河北、河南、山东、山西）的排放的隐含PM<sub>2.5</sub>中的约13%被输送到了其他省份，且有约7%被输送到国外。李辉<sup>[4]</sup>通过观测得出2022年1月发生在济南的一次重灰霾污染事件中，PM<sub>2.5</sub>、SO<sub>2</sub>、NO<sub>2</sub>、O<sub>3</sub>等污染物的来源除本地污染物排放外，还包括了高空的异地污染传输。跨区域大气污染的现象加大了污染治理的复杂性，也对公众健康带来了极大的不利影响<sup>[5]</sup>，成为空气污染治理的一大挑战。各个地区"各自为政"的方式已难以有效解决跨区域大气污染问题<sup>[6]</sup>。这要求大气污染治理的"跨区域协同"。若不同地区间的大气污染相关数据无法互通共享，或是采用的标准具有较大差异，协同治理的难度将加大，环境管理的公平性也将受损。同时，大气环境监测与治理的技术和方法也需要做出区域化协同化的适配，确保它们的区域针对性方能使污染治理效果最大化。</p>
+    
+    <h3>1.2 大气复合污染问题</h3>
+    <p class="mt-2 mb-2">过去几年，我国在空气污染治理方面有较大进展，全国不同地区该方面都取得了显著成效，空气质量相比于2013年国务院发布《大气污染防治行动计划》前有了明显的改善，全国空气污染天数与PM<sub>2.5</sub>、SO<sub>2</sub>、NO<sub>x</sub>等污染物浓度呈下降趋势<sup>[7]</sup>。但目前我国空气污染治理仍处于攻坚期，存在着后劲不足和停滞等问题。进一步降低大气污染物的浓度使之达到国内和国际的更高标准极为困难；中国各地的空气污染疫情后甚至出现偶发的反弹状况。此外，我国近年来O<sub>3</sub>浓度仍然高位震荡（<strong>图1</strong>）<sup>[7]</sup>，而这与VOCs的治理效果不佳有着紧密联系<sup>[8]</sup>。通过分析可以得知，中国在过去的空气污染物治理上主要针对一次污染物，而对二次污染物（O<sub>3</sub>、大气气溶胶等）的治理仍存在不足。美国和欧洲虽然具有一些相对成功的二次污染治理经验，但在近几年，由于温度上升和野火的频繁发生，O<sub>3</sub>污染也出现了反弹<sup>[9]</sup>。</p>
+    
+    <div class="figure">
+      <img src="images/note_1_fig_1.png">
+        <p>图1 2015至2023年我国O<sub>3</sub>浓度曲线<sup>[7,10]</sup></p>
+    </div>
+    
+    <p class="mt-2 mb-2">1997年，唐孝炎提出"大气复合污染"（air pollution complex）概念，其中最关键的科学问题便是大气氧化性与颗粒物之间的相互作用。而这一概念及其蕴含的学术思想更成为了日后大气污染研究的核心要领。O<sub>3</sub>的形成机制极为复杂，且与它的前体物（NO<sub>x</sub>、VOCs等）的含量具有非线性关系<sup>[11]</sup>，因而在治理过程中需要采取更系统综合的思路，不能将污染减排作为唯一抓手<sup>[8]</sup>。Lu等<sup>[12]</sup>针对大气二次污染的形成机制总结出了阳光照射下含有污染物的大气的"自催化"（autocatalytic）过程（<strong>图2</strong>），同时指出大气污染物的形成与消除与光化学有着紧密联系，体现了大气复合污染极为复杂的污染物因素和环境条件。</p>
+    
+    <div class="figure">
+      <img src="images/note_1_fig_2.png">
+        <p>图2 基于大气复合污染与大气氧化性的多污染物转化原理<sup>[12]</sup></p>
+    </div>
+    
+    <p class="mt-2 mb-2">随着研究的不断深入，越来越多的物质被确认存在大气污染与环境健康的风险。例如，除已有较多研究的HNO<sub>3</sub>、H<sub>2</sub>SO<sub>4</sub>外，新的研究发现无机HIO<sub>3</sub><sup>[13]</sup>、有机胺<sup>[14]</sup>等物质都能成为大气气溶胶的成核来源。这意味着大气复合污染及其治理需将更多物质纳入考虑范围，因而将更为系统、综合、复杂。</p>
+
+<h3>1.3 大气污染与CO<sub>2</sub>的协同防治问题</h3>
+<p class="mt-2 mb-2">目前，世界各国都面临着改善空气质量和缓解气候变化的双重挑战。而这要求空气污染物、CO<sub>2</sub>和短寿命气候污染物（short-lived climate pollutants, SLCPs）的排放量的同时减少<sup>[15, 16]</sup>。这成为了大气污染与CO<sub>2</sub>的协同防治问题的背景。同时，也有研究表明，将大气污染和温室效应与CO<sub>2</sub>控制相结合，在增效的同时可以减小治理的政策的复杂性与治理的经济成本<sup>[17]</sup>。大气污染需要与CO<sub>2</sub>进行协同防治，而此种协同防治在积极应对改善空气质量和缓解气候变化的双重挑战的同时，也在一定程度上增加了大气污染防治与温室效应控制的复杂性与难度。</p>
+
+<h3>1.4 空气质量模型创新的必要性</h3>
+<p class="mt-2 mb-2">空气质量模型（air quality model）是一种综合运用数学、物理、化学、气象学、信息学等方法模拟大气污染物乃至大气中各种物质的输送、扩散、反应和清除等过程的模型，它能够分析大气污染物的时空演变趋势<sup>[18]</sup>。空气质量模型与大气污染紧密相关，也随着大气污染问题的发展变化与人们对大气污染研究的深入而不断更新迭代。较为成熟的空气质量模型作为系统化的数学计算模型，需要数据的输入输出过程以及相关基础学科支撑的计算方法（<strong>图3</strong>），从而综合考虑气象、地理、污染排放、时间等多种因素。</p>
+ 
+<div class="figure">
+  <img src="images/note_1_fig_3.png">
+  <p>图3 较为成熟的空气质量模型框图<sup>[19]</sup></p>
+</div>
+<p class="mt-2 mb-2">较早期的空气质量模型，如简单的箱式模型（box model），已经能够运用基本的物理化学原理对空气污染物的演变进行模拟。但仅仅基于质量守恒定律的简单箱式模型对大气污染问题的因素考虑不足，忽视了气象（尤其是大气流动）、区域、光化学等诸多大气污染影响因子<sup>[20]</sup>，对于当今错综复杂的大气污染问题的解决能力有限。运用更加系统的科学方法，对空气质量模型做出创新，使之具有更强的模拟和预测能力成为必要。空气质量模型的不断创新将加深人们对大气污染问题的科学理解，从而为该问题的解决提供有力支撑。</p>
+
+
+<h2>2 空气质量模型的不同类型</h2>
+
+<h3>2.1 按照空间尺度分类</h3>
+<p class="mt-2 mb-2">对空气质量模型应用的需求在不同的空间尺度上都有涉及。为确保更优的拟合和预测效果，在不同的空间尺度上，应用的模型算法也不尽相同。本节将按照以小到大的顺序介绍不同空间尺度的不同空气质量模型。</p>
+
+<h4>2.1.1 中小尺度模型</h4>
+<p class＝“mt-2 mb-2”>中小尺度模型的开发时间较早，一般显示出“轻量化”的特征，算法简易且快速，易于操作，对基础数据的要求较低<sup>[18]</sup>。中小尺度模型的模拟及预测“尺度”
+一般在50 km范围左右。中小尺度模型包括箱式模型、高斯模型（Gaussian model）以及拉格朗日轨迹模型（Lagrangian model）。箱式模型的科学原理主要是质量守恒定律，主要包括AURORA、CPB以及PBM等。高斯模型基于湍流扩散统计理论，可假定污染物的浓度分布近似服从高斯分布，主要有AERMOD、ADMS、SCREEN3、CALPUFF等，下文将简单介绍这些模型。拉格朗日轨迹模型是一种跟踪空气“随风移动”的方法，它将大气中物质的运动视为随机游走过程，主要包括GRAL等<sup>[20]</sup>。</p>
+
+<p class="mt-2 mb-2">AERMOD模型是由美国环境署（EPA）开发的空气质量模型，兼顾了不同地形下区域内气相与界面污染物的扩散，同时较好地考虑了影响空气污染的气象因素<sup>[21]</sup>。AERMOD的显著优势在于它依赖于先前文献中所建立的成功的建模方法，以及对大气扩散模型中常见的不连续性特征的有效规避<sup>[22]</sup>。Pandey等<sup>[23]</sup>运用了AERMOD模型对美国洛杉矶国际机场的污染物排放通过建立烟羽抬升模型进行解析，综合考虑了航空器排放、非航空器排放与气象因素带来的污染转移等。EPA基于AERMOD模型开发了AERSCREEN模型，和SCREEN3模型等并列成为“屏障模型”（screening models）<sup>[24]</sup>。屏障模型侧重于空气污染物在一定时空范围内的“最差情况”（"worst-case"）与浓度最大值等指标。</p>
+
+<p class="mt-2 mb-2">ADMS主要由以英国剑桥环境研究中心（CERC）研发，对气象因素输入的要求更为简单<sup>[25]</sup>，对点源、线源、面源或体源都有较好的模拟效果，因而对海岸线、复杂建筑等因素有更强的处理能力<sup>[26]</sup>。最新的ADMS 6模型相较AERMOD模型有较多方面的提升（<strong>表1</strong>）。</p>
+
+<table>
+    <caption>表1 ADMS 6与AERMOD的功能对照<sup>[26]</sup></caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th><strong>ADMS 6</strong></th>
+            <th><strong>AERMOD</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="3"><strong>（1）气象条件</strong></td>
+        </tr>
+        <tr>
+            <td><strong>烟羽抬升</strong></td>
+            <td>综合计算模型</td>
+            <td>Briggs经验公式</td>
+        </tr>
+        <tr>
+            <td><strong>浓度分布模型</strong></td>
+            <td>Advanced Gaussian</td>
+            <td>Advanced Gaussian</td>
+        </tr>
+        <tr>
+            <td colspan="3"><strong>（2）更多复杂条件</strong></td>
+        </tr>
+        <tr>
+            <td><strong>建筑物</strong></td>
+            <td>ADMS建筑物模型</td>
+            <td>PRIME建筑物模型</td>
+        </tr>
+        <tr>
+            <td><strong>复杂地形</strong></td>
+            <td>基于 FLOWSTAR 模型的流场计算</td>
+            <td>简单的插值计算</td>
+        </tr>
+        <tr>
+            <td><strong>不同湿度下的沉积</strong></td>
+            <td>✓</td>
+            <td>✓</td>
+        </tr>
+        <tr>
+            <td><strong>化学</strong></td>
+            <td>NO与O<sub>3</sub>反应、NO<sub>2</sub>光化学反应、胺化学等</td>
+            <td>NO<sub>x</sub>计算方法</td>
+        </tr>
+        <tr>
+            <td colspan="3"><strong>（3）其他</strong></td>
+        </tr>
+        <tr>
+            <td><strong>考虑风力发电机影响</strong></td>
+            <td>✓</td>
+            <td>✕</td>
+        </tr>
+        <tr>
+            <td><strong>浓度波动</strong></td>
+            <td>✓</td>
+            <td>✕</td>
+        </tr>
+        <tr>
+            <td><strong>烟羽可见性</strong></td>
+            <td>凝结羽流能见度计算</td>
+            <td>✕</td>
+        </tr>
+        <tr>
+            <td><strong>温湿度</strong></td>
+            <td>烟羽内部的温湿度输出数据</td>
+            <td>✕</td>
+        </tr>
+        <tr>
+            <td><strong>放射性</strong></td>
+            <td>定量分析；衰变链条数据库</td>
+            <td>简单衰变模型</td>
+        </tr>
+        <tr>
+            <td><strong>烟团模型</strong></td>
+            <td>✓</td>
+            <td>✕</td>
+        </tr>
+        <tr>
+            <td><strong>海岸线图层与模型</strong></td>
+            <td>✓</td>
+            <td>✕</td>
+        </tr>
+        <tr>
+            <td><strong>垂直方向气象数据</strong></td>
+            <td>✓</td>
+            <td>✓</td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="mt-2 mb-2">CALPUFF模型最为突出的优点之一是对非稳态环境下（如静小风、熏烟、环流等）的大气污染模拟<sup>[27]</sup>。它同时具备三维气象场等成熟的空气质量模型所需数据与算法，使用场景广泛。</p>
+
+<p class="mt-2 mb-2">当然，早期（20世纪）的中小尺度模型仅在惰性大气污染物的研究中具有较好的效果，较难适用于大气污染物的相互影响转化以及二次污染、复合污染等问题的研究<sup>[18]</sup>。原先的中小尺度模型经过更新迭代之后，对大气复合污染问题与各种新型污染物做出了不同程度的适配（尤其是始于2003年的CALPUFF模型）。例如，Chi等<sup>[28]</sup>运用了CALPUFF模型对珠江三角洲的二次污染物及其来源的分析研究。同时，这些模型的更新迭代也包括了模型尺度的放大，原先的中小尺度模型也能在一定程度上分析大气污染物的传输机制，如CALPUFF的污染物长距离传输评估功能已比较完善<sup>[27]</sup>。</p>
+
+<h4>2.1.2 区域尺度模型</h4>
+<p class="mt-2 mb-2">区域尺度模型将空气质量模型的分析尺度扩展到城市或城市群，从而满足一个区域内的大气污染综合防治需求。典型的区域尺度模型有WRF-Chem、CAMx、CMAQ以及NAQPMS等。</p>
+
+<p class="mt-2 mb-2">WRF-Chem模型（Weather Research and Forecasting model coupled with Chemistry）通过化学方法研究区域的气象条件与空气污染状况<sup>[29]</sup>，对大气物理和大气化学以及相关的气象状况考虑周密。WRF-Chem在区域性大气复合污染的研究中得到广泛运用，多被用于大气气溶胶与大气污染相关研究<sup>[29,30]</sup>。Wang等<sup>[31]</sup>运用WRF-Chem模型对川渝地区的PM<sub>2.5</sub>和O<sub>3</sub>浓度进行模拟和预测，将气溶胶反馈（aerosol feedback，它使PM2.5浓度在一月上升8%，在七月上升25%）在建模分析中一并考虑，得到较好的效果。</p>
+
+<p class="mt-2 mb-2">CAMx是一种先进的光化学网格模型，能实现在区域尺度上对对流层空气污染的综合处理，同时提供气相、表面等化学模型<sup>[32]</sup>。同时，它是一个开源系统，计算高效灵活。Huang等<sup>[33]</sup>运用CAMx对2002年1月北京空气质量数据进行分析，得到不同污染源的逐小时SO<sub>2</sub>排放量占比（<strong>图4</strong>），并指出采暖是北京在这一时段SO<sub>2</sub>排放的主要来源。</p>
+
+<div class="figure">
+  <img src="images/note_1_fig_4.png">
+    <p>图4 2022年1月北京不同污染源的逐小时SO<sub>2</sub>排放量占比<sup>[33]</sup></p>
+</div>
+
+<p class="mt-2 mb-2">CMAQ是EPA开发的区域尺度空气质量模型，它也是由大气化学支撑、综合考虑气象等多种因素的空气质量模拟与预测模型<sup>[34]</sup>。CMAQ在科学方法上属于欧拉模型（Eulerian model），在固定的三维网格上跟踪污染羽流随时间的变化状况。CMAQ模型也和环境健康结合紧密，通过CMAQ可以评价不同污染物的健康代价<sup>[35]</sup>。</p>
+
+<p class="mt-2 mb-2">NAQPMS模型是中国科学院大气物理研究所开发的三维欧拉网格空气质量模型，对多种污染类型、各种非线性关系的处理能力较强，在溯源和预报技术上实现了创新和突破<sup>[18,36]</sup>。Wang等<sup>[37]</sup>通过NAQPMS模型对2013年9月27日至10月1日的京津冀一次秋季严重灰霾进行模拟，得出气溶胶直接辐射效应能够使石家庄近地面PM<sub>2.5</sub>浓度增加约30%的结论，同时分析出灰霾与边界层气象要素间存在正反馈机制。</p>
+
+<p class="mt-2 mb-2">不同区域尺度模型思路相近，算法的精准性、网格的分辨率、计算效率与创新特点等成为不同研究对区域尺度空气质量模型选择的标准<sup>[36]</sup>。</p>
+
+<h4>2.1.3 全球尺度模型</h4>
+<p class="mt-2 mb-2">全球尺度模型主要对大气污染物的全球尺度长距离传输及化学反应机制进行模拟，也能通过全球尺度的综合分析，模拟或预测某一特定地区的大气污染状况。已成熟且被广泛应用的模型有CEOS-Chem、MOZART-4以及CESM2等。</p>
+
+<p class="mt-2 mb-2">GEOS-Chem是一种计算特定情况下全球尺度大气成分的三维大气化学模型，它由 NASA 全球建模和同化办公室（NASA Global Modeling and Assimilation Office）的Goddard地球观测系统（Goddard Earth Observing System, GEOS）采集的数据作为原始输入，并广泛应用于大气成分研究<sup>[38]</sup>。例如，Kim等<sup>[39]</sup>使用GEOS-Chem模型对美国东南部大气气溶胶相关指标进行溯源和预测。</p>
+
+<p class="mt-2 mb-2">MOZART（Model for Ozone and Related chemical Tracers）是一种在全球尺度上综合计算大气成分在水平方向输送以及垂直方向扩散的模型。MOZART-4是MOZART的较新较成熟的版本，它综合考虑了气象学中的各种因素（如风速、风向、温度、湿度、太阳辐射、雪层高度等），分析对流层化学机制中的85种气态物质（如NO<sub>x</sub>、CO、小分子有机物以及相比于以往版本新增的长链碳氢化合物等）对大气污染排放、大气氧化性、大气气溶胶等多种问题进行定量分析<sup>[40]</sup>。MOZART-4的开发者<sup>[40]</sup>利用该模型分析出的2000至2007年全球不同地域不同海拔的O<sub>3</sub>浓度与实际观测到的浓度较为接近（<strong>图5</strong>）。目前，MOZART本身将不再被进一步开发，但该模型所使用的化学机制仍在根据最新的化学研究成果进行更新迭代，例如新加入VOCs与复杂有机物的相关机制（被称作MOZART-T1）<sup>[41,42]</sup>。</p>
+
+<div class="figure">
+    <img src="images/note_1_fig_5.png">
+    <p>图5 2000至2007年全球不同地域不同海拔的O<sub>3</sub>浓度<sup>[40]</sup>。数据点表示来自特定纬度范围内多个站点的观测数据的月平均值，颜色表示年份；线则表示相同时间段内、基于相同站点集合的MOZART-4模型预测的月平均值。</p>
+</div>
+
+<p class="mt-2 mb-2">CESM2（Community Earth System Model Version 2）则是在MOZART-4以及MOZART-T1的基础与经验上进一步开发的全球尺度空气质量模型。Emmons等<sup>[42]</sup>对CESM2模型的研究指出：（1）CESM2的模拟结果显示，以往的模型低估了多种人为排放污染物的浓度；（2）CESM2在模拟美国东南部地面O<sub>3</sub>方面有所改进，这主要得益于该模型对反应性氮和有机硝酸盐化合物的更好表征；然而夏季的地面O<sub>3</sub>浓度计算值高于观测值；（3）全球范围内，CESM2对对流层O<sub>3</sub>浓度的模拟与探空观测值相符；（4）与飞机观测数据的比较表明，CESM2模型NO<sub>x</sub>和PAN等物质浓度模拟效果较好。</p>
+
+<h3>2.2 按照应用领域分类</h3>
+<p class="mt-2 mb-2">空气质量模型按照应用领域可以分为监管模型、预测预警模型、健康与风险评估模型以及气候相互作用模型等<sup>[19]</sup>。监管模型常与排放标准、空气质量标准以及影响评估或政策决策相结合，常见的有ISCST3（工业源复合模型）、AERMOD等。预测预警模型用于预测空气质量并提供预警。WRF-Chem就是一种典型的预测预警模型。健康与风险评估模型用于预测暴露于空气污染的健康影响，既关注长期慢性的健康风险，也评估突发疾病（如哮喘发作）的潜在风险。气候相互作用模型将空气质量与气候变化相结合，CESM是其中的典型。</p>
+
+<p class="mt-2 mb-2">空气质量模型具体的应用场景以及对大气污染防治的意义详见<strong>第3节</strong>。</p>
+
+<h2 id="空气质量模型的应用状况">3 空气质量模型的应用状况</h2>
+
+<h3 id="空气质量预测">3.1 空气质量预测</h3>
+<p class="mt-2 mb-2">对空气质量模型的开发人员来说，"好的模型"意味着空气质量模型的模拟和预测能力强。精准的空气质量预测既能实现空气质量模型这一学术领域的创新，也能为人们对生产生活提供有益指导。目前，通过空气质量模型实现的空气质量预测方法被广泛运用在实际的气象平台中。例如，广东省中山市建立了一套基于CAMx、NAQPMS和CMAQ多种空气质量模型的综合气象平台，基于不同尺度（从东亚到华南到广东省再到中山市）综合考虑了中山市及其周边地区的地形状况、各种大气污染物的排放情况及污染物物理化学变化规律，从而对未来七天的空气质量进行预报<sup>[43]</sup>。</p>
+
+<h3 id="大气污染物来源解析">3.2 大气污染物来源解析</h3>
+<p class="mt-2 mb-2">源解析工作也是空气质量模型研究的重要意义。当大气污染源明晰，大气污染防治与环境管理的方向便能明确。大气污染物来源解析可分为两方面：（1）解析大气污染的化学物质来源或前体物；（2）解析污染物排放源（如工业源、移动源、生活源、农业源等）。Wang等<sup>[9]</sup>的研究通过GEOS-Chem模型，指出全球不同地区在不同季节O<sub>3</sub>污染主要前体物的差异。Zheng等<sup>[44]</sup>通过建立大数据模型对华北部分地区的大气污染成因进行分析（<strong>图6</strong>）。</p>
+
+<div class="figure">
+    <img src="images/note_1_fig_6.png">
+    <p>图6 区域特征雷达及不同污染类型分布<sub>[44]</sub></p>
+</div>
+
+<h3 id="治理政策与方案辅助制定">3.3 治理政策与方案辅助制定</h3>
+<p class="mt-2 mb-2">由于大部分空气质量模型可以自主选定输入数据，所以空气质量模型可以对政策方案出台后的空气质量趋势进行模拟预测，这为治理政策与方案的制定提供了可靠的科学依据。例如Shi等<sup>[45]</sup>对我国大气污染移动源治理的标准进行模型预测，得到新的治理标准实施后我国大气污染问题不同程度的缓解（<strong>图7</strong>）。空气质量模型也可以针对治理方案制定进行进一步优化以降低不确定度。</p>
+
+<div class="figure">
+  <img src="images/note_1_fig_7.png">
+  <p>图7 中国PM<sub>2.5</sub>年平均浓度与2019年水平相比变化的驱动因素<sup>[45]</sup>。ES、EV、RRW、FCR分别代表排放标准提升、电动汽车、公路到铁路和水道等交通重组和油耗监管。</p>
+</div>
+
+<h3 id="大气污染的健康研究">3.4 大气污染的健康研究</h3>
+<p class="mt-2 mb-2">以往对于大气污染的健康研究很多仅建立在直接对空气质量相关指标和人的健康水平间进行建模<sup>[47]</sup>，因而仅能分析空气质量相关指标与健康的相关关系，而并不能直接得到二者的因果关系。通过具体科学的大气物理化学机制和大气污染物的健康效应，运用空气质量模型可以对具体的空气污染状况与健康风险的因果联系有更深入的认知，因而能够辅助环境健康领域的“对症下药”。基于空气质量模型的健康研究逐渐成为主流，一些空气质量模型自身就植入了健康风险评估。例如，Stewart等<sup>[48]</sup>运用CMAQ模型和先前关于不同污染物环境健康风险的研究成果得出了量化的O<sub>3</sub>与PM<sub>2.5</sub>相关健康影响（如在基准年期间，暴露于O<sub>3</sub>和PM<sub>2.5</sub>可能分别导致圣贝纳迪诺县、河滨县、橙县和洛杉矶县共计432人、721人、755人和2137人死亡，分别占各县总死亡人数的3.9%、5.5%、4.7%和3.9%），并有效预测了减排对减小环境健康风险的量化程度，如在美国，当NO<sub>x</sub>排放减少88%，大气污染健康风险带来的经济花费的减少量将是原来的1.66倍。空气质量模型大大增加了相关研究的科学性。</p>
+
+<h2 id="空气质量模型的创新发展">4 空气质量模型的创新发展</h2>
+
+<h3 id="机器学习与人工智能方法的辅助">4.1 机器学习与人工智能方法的辅助</h3>
+<p class="mt-2 mb-2">随着人工智能技术的更新迭代，人工智能在模型的处理上显现出极大的优势。机器学习（machine learning, ML）、人工神经网络（artificial neural network, ANN）等方法在空气质量模型上已经得到广泛运用。通过机器学习可以对大气污染水平、排放水平、不同污染物指标、健康风险乃至社会经济等多种指标之间具有的非线性关系做出探究，更有助于研究大气污染的成因与缓解办法。例如，Kassandros等<sup>[49]</sup>通过机器学习优化空气质量模型的算法，获得了更为准确的大气污染机制的模拟结果。目前也有很多基于人工智能辅助的污染物溯源、健康风险评估等工作<sup>[50-52]</sup>。更有相当一部分研究将机器学习与人工智能辅助的空气质量模型嵌入到可持续发展规划当中，从而为各个社会主体提供有益建议<sup>[50, 52]</sup>。</p>
+
+<h3 id="空气质量模型的一体化创新">4.2 空气质量模型的“一体化”创新</h3>
+<p class="mt-2 mb-2">由于空气质量模型准确性、实时性以及可视化程度的不断提高，空气质量模型可以被直接植入到区域“一体化”环境管控的信息系统，为大气污染的综合防治提供有益参考价值。区域的“一体化”包括大气污染在区域空间维度的联防联控，也包含多污染物、多要素协同治理以及大气污染-气候协同治理。Zheng等<sup>[44]</sup>在大数据智能技术的空气质量综合分析系统中植入空气质量的科学模型，研制出“河南省城市空气质量大数据综合应用系统”，将空气质量模型应用到（1）多源监测数据综合分析与专项分析；（2）污染物动态源解析和形势评估；（3）空气质量多层级达标在线分析中，从而为区域大气污染的联防联控机制提供科学有益的参考。目前也有研究通过空气质量模型结合人工智能等方式建立大气污染和气候变化联合调控的模型<sup>[53]</sup>。
+</p>
+
+<h3 id="空气质量模型自身的评估优化">4.3 空气质量模型自身的评估优化</h3>
+<p class="mt-2 mb-2">空气质量模型首先可以通过统计学方法进行评估。通过计算模型自身的<i>R</i><sup>2</sup>以及归一化后的RMSE（误差的方均根值）、MB（误差均值）等指标的值可以衡量空气质量模型的模拟能力<sup>[54]</sup>；运用类似的统计学方法将模型计算得到的污染物浓度随时间（或空间）的分布与实际测量值进行比较，相关指标能够衡量空气质量模型的预测能力<sup>[55]</sup>。基础的统计学方法较为传统，但为空气质量模型及其评估方法的不断优化提供了基本原理和思路。</p>
+<p class="mt-2 mb-2">对大气跨区域复合污染背景下的空气质量模型评估是多维度的，Dennis等<sup>[56]</sup>将它们总结为一个框架，其中包括了运行评估（operational evaluation，思路即为上段所述的预测值与实际值对比）、动态评估（dynamic evaluation）、诊断评估（diagnostic evaluation）和可能性评估（probabilistic evaluation）。</p>
+<p class="mt-2 mb-2">由于空气质量多变，空气质量模型对突然发生的气象条件变化和空气质量指标变化的处理能力也极为重要。动态评估方法可以通过建立与大气复合污染背景下前体物相关的统计量来衡量空气质量模型的应变能力强弱<sup>[57]</sup>，从而实现对空气质量模型的另一角度的评估。</p>
+<p class="mt-2 mb-2">诊断评估侧重于分析误差来源，能够实现空气质量模型模拟能力较好或较差的原因分析。例如，Henneman等通过诊断评估量化地分别研究排放和气象因素对CMAQ模型表现的影响。</p>
+<p class="mt-2 mb-2">可能性评估将空气质量模型的置信水平也纳入对空气质量模型的评估指标中，使评估更加全面、严谨、细致。<sup>[58]</sup></p>
+<p class="mt-2 mb-2">随着统计学与人工智能技术的发展，未来也将会有更多评估优化方法的出现，促进空气质量模型的创新发展。</p>
+
+<h2 id="总结">5 总结</h2>
+<p class="mt-2 mb-2">针对目前彰显出区域性、复杂性的大气污染问题，空气质量模型通过数学、物理、化学、气象学等手段对污染物在大气中的转化、扩散、输送以及它们的健康影响进行模拟、评估和预测。科学的空气质量模型在源解析、监管、预测预警、健康与风险评估等方面发挥较大的作用。随着科学的发展与技术的迭代，空气质量模型正在不断优化，实现效率、精准性、预测能力等多方面的综合提升，为大气污染问题的解决提供更全面系统的思路。</p>
+
+<h2>参考文献</h2>
+<p class="small">[1] CHEN W, WU S, LEI Y, et al. Interprovincial transfer of embodied energy between the Jing-Jin-Ji area and other provinces in China: A quantification using interprovincial input-output model [J]. Science of The Total Environment, 2017, 584-585: 990-1003.</p>
+<p class="small">[2] WANG Y, BAI Y, ZHI X, et al. Two Typical Patterns of Regional PM2.5 Transport for Heavy Air Pollution Over Central China: Rapid Transit Transport and Stationary Accumulation Transport [J]. Frontiers in Environmental Science, 2022, 10.</p>
+<p class="small">[3] YANG X, ZHANG W, FAN J, et al. Transfers of embodied PM2.5 emissions from and to the North China region based on a multiregional input-output model [J]. Environmental Pollution, 2018, 235: 381-93.</p>
+<p class="small">[4] 李辉. 基于星地联合观测的济南地区冬季灰霾污染研究 [D]. 山东师范大学, 2022.</p>
+<p class="small">[5] DING D, JIANG Y, WANG S, et al. Unveiling the health impacts of air pollution transport in China [J]. Environ Int, 2024, 191.</p>
+<p class="small">[6] 王金南, 宁淼, 孙亚梅. 区域大气污染联防联控的理论与方法分析 [J]. 环境与可持续发展, 2012, 37(05): 5-10.</p>
+<p class="small">[7] 中华人民共和国生态环境部. 中国生态环境状况公报 [R], 2017-2023.</p>
+<p class="small">[8] 中国环境科学学会臭氧污染控制专业委员会编. 中国大气臭氧污染防治蓝皮书 2023 [M]. 北京：科学出版社, 2024.</p>
+<p class="small">[9] WANG H L, LU X, PALMER P, et al. Deciphering decadal urban ozone trends from historical records since 1980 [J]. National Science Review, 2024, 11(11): 13.</p>
+<p class="small">[10]  中华人民共和国生态环境部. 中国环境状况公报 [R], 2015-2016.</p>
+<p class="small">[11]  TAN Z F, LU K D, MA X F, et al. Multiple Impacts of Aerosols on O3 Production Are Largely Compensated: A Case Study Shenzhen, China [J]. Environmental Science & Technology, 2022: 12.</p>
+<p class="small">[12]  LU K, GUO S, TAN Z, et al. Exploring atmospheric free-radical chemistry in China: the self-cleansing capacity and the formation of secondary air pollution [J]. National Science Review, 2019, 6(3): 579-94.</p>
+<p class="small">[13]  HE X-C, THAM Y J, DADA L, et al. Role of iodine oxoacids in atmospheric aerosol nucleation [J]. Science, 2021, 371(6529): 589-95.</p>
+<p class="small">[14]  CHEN J, WANG G, SUI X, et al. Research progress of mechanism of atmospheric aerosol nucleation promoted by organic amines [J]. Journal of Atmospheric and Environmental Optics, 2024, 19(2): 142-61.</p>
+<p class="small">[15]  FIORE A M, NAIK V, LEIBENSPERGER E M. Air Quality and Climate Connections [J]. J Air Waste Manage Assoc, 2015, 65(6): 645-85.</p>
+<p class="small">[16]  ZHENG Y, CAO W, ZHAO H, et al. Identifying Key Sources for Air Pollution and CO<sub>2</sub> Emission Co-control in China [J]. Environmental Science & Technology, 2024, 58(35): 15381-94.</p>
+<p class="small">[17]  NAM K-M, WAUGH C J, PALTSEV S, et al. Carbon co-benefits of tighter SO2 and NOx regulations in China [J]. Global Environmental Change, 2013, 23(6): 1648-61.</p>
+<p class="small">[18]  GAO Y, LIU Y, LYU J. A review of air quality models research progress [J]. Environmental Pollution & Control, 2022, 44(7): 939-43.</p>
+<p class="small">[19]  RIBEIRO I, VALENTE J, AMORIM J H, et al. Air Quality Modelling and Its Applications [M]. Springer Netherlands. 2014: 45-56.</p>
+<p class="small">[20]  HOLMES N S, MORAWSKA L. A review of dispersion modelling and its application to the dispersion of particles: An overview of different dispersion models available [J]. Atmos Environ, 2006, 40(30): 5902-28.</p>
+<p class="small">[21]  AGENCY U S E P. Air Quality Dispersion Modeling - Preferred and Recommended Models | US EPA [EB/OL]. (2025/1/10)[2025/1/10], https://www.epa.gov/scram/air-quality-dispersion-modeling-preferred-and-recommended-models.</p>
+<p class="small">[22]  CIMORELLI A J, PERRY S G, VENKATRAM A, et al. AERMOD: A dispersion model for industrial source applications. Part I: General model formulation and boundary layer characterization [J]. J Appl Meteorol, 2005, 44(5): 682-93.</p>
+<p class="small">[23]  PANDEY G, VENKATRAM A, ARUNACHALAM S. Accounting for plume rise of aircraft emissions and shoreline meteorology enhances AERMOD's description of concentrations measured around Los Angeles airport [J]. J Air Waste Manage Assoc, 2024, 74(10): 726-42.</p>
+<p class="small">[24]  AGENCY U S E P. Air Quality Dispersion Modeling - Screening Models | US EPA [EB/OL]. (2025/1/11)[2025/1/11], https://www.epa.gov/scram/air-quality-dispersion-modeling-screening-models.</p>
+<p class="small">[25]  孙大伟. 新一代大气扩散模型(ADMS)应用研究 [J]. 环境保护科学, 2004, 30(1).</p>
+<p class="small">[26]  CONSULTANTS C E R. CERC > Environmental software > ADMS model [EB/OL]. (2024/2/2)[2025/1/11], https://www.cerc.co.uk/environmental-software/ADMS-model.html.</p>
+<p class="small">[27]  ENVIRONMENTAL L. Official CALPUFF Modeling System [EB/OL]. (2024/11/5)[2025/1/11], https://www.calpuff.org/.</p>
+<p class="small">[28]  CHI Y, ZHANG H, RAO S, et al. Effects of land use change on specific air pollutants dispersion in the Pearl River Delta Region [J]. Ecology and Environmental Sciences, 2013, 22(10): 1682-7.</p>
+<p class="small">[29]  ZHANG Y, PAN Y, WANG K, et al. WRF/Chem‐MADRID: Incorporation of an aerosol module into WRF/Chem and its initial application to the TexAQS2000 episode [J]. Journal of Geophysical Research: Atmospheres, 2010, 115(D18).</p>
+<p class="small">[30]  LIU C, HUANG J, HU X-M, et al. Evaluation of WRF-Chem simulations on vertical profiles of PM2.5 with UAV observations during a haze pollution event [J]. Atmos Environ, 2021, 252: 118332.</p>
+<p class="small">[31]  WANG P, QIAO X, ZHANG H. Modeling PM2.5 and O3 with aerosol feedbacks using WRF/Chem over the Sichuan Basin, southwestern China [J]. Chemosphere, 2020, 254: 126735.</p>
+<p class="small">[32]  RAMBOLL. About - CAMx [EB/OL]. (2025/1/11)[2025/1/11], https://www.camx.com/about/.</p>
+<p class="small">[33]  HUANG Q, CHENG S, PEROZZI R E, et al. Use of a MM5–CAMx–PSAT Modeling System to Study SO2 Source Apportionment in the Beijing Metropolitan Region [J]. Environmental Modeling &amp; Assessment, 2012, 17(5): 527-38.</p>
+<p class="small">[34]  AGENCY U S E P. CMAQ: The Community Multiscale Air Quality Modeling System | US EPA [EB/OL]. (2025/1/11)[2025/1/11], https://www.epa.gov/cmaq.</p>
+<p class="small">[35]  BUONOCORE J J, DONG X, SPENGLER J D, et al. Using the Community Multiscale Air Quality (CMAQ) model to estimate public health impacts of PM2.5 from individual power plants [J]. Environ Int, 2014, 68: 200-8.</p>
+<p class="small">[36]  GAO Z, ZHOU X. A review of the CAMx, CMAQ, WRF-Chem and NAQPMS models: Application, evaluation and uncertainty factors [J]. Environmental Pollution, 2024, 343: 123183.</p>
+<p class="small">[37]  WANG Z, WANG Z, LI J, et al. Development of a Meteorology-Chemistry Two-Way Coupled Numerical Model (WRF-NAQPMS) and Its Application in a Severe Autumn Haze Simulation over the Beijing-Tianjin-Hebei Area, China [J]. Climatic and Environmental Research, 2014, 19(2): 153-63.</p>
+<p class="small">[38]  GEOS-CHEM. Welcome to the GEOS-Chem website [EB/OL]. (2025/1/9)[2025/1/9], https://geoschem.github.io/.</p>
+<p class="small">[39]  KIM P S, JACOB D J, FISHER J A, et al. Sources, seasonality, and trends of southeast US aerosol: an integrated analysis of surface, aircraft, and satellite observations with the GEOS-Chem chemical transport model [J]. Atmospheric Chemistry and Physics, 2015, 15(18): 10411-33.</p>
+<p class="small">[40]  EMMONS L K, WALTERS S, HESS P G, et al. Description and evaluation of the Model for Ozone and Related chemical Tracers, version 4 (MOZART-4) [J]. Geoscientific Model Development, 2010, 3(1): 43-67.</p>
+<p class="small">[41]  WENNBERG P O, BATES K H, CROUNSE J D, et al. Gas-Phase Reactions of Isoprene and Its Major Oxidation Products [J]. Chemical Reviews, 2018, 118(7): 3337-90.</p>
+<p class="small">[42]  EMMONS L K, SCHWANTES R H, ORLANDO J J, et al. The Chemistry Mechanism in the Community Earth System Model Version 2 (CESM2) [J]. Journal of Advances in Modeling Earth Systems, 2020, 12(4): e2019MS001882.</p>
+<p class="small">[43]  JIANG Z, XU X, CHEN Y, et al. Application of Air Quality Multi-model Forecasting System in Zhongshan [J]. Environmental Monitoring in China, 2018, 34(4): 34-43.</p>
+<p class="small">[44]  ZHENG Y, WANG X, XING Y, et al. Design and Application of Air Quality Comprehensive Analysis System Based on Big Data Intelligent Technology [J]. The Administration and Technique of Environmental Monitoring, 2022, 34(4): 27-31.</p>
+<p class="small">[45]  SHI X R, LEI Y, XUE W B, et al. Drivers in carbon dioxide, air pollutants emissions and health benefits of China's clean vehicle fleet 2019-2035 [J]. J Clean Prod, 2023, 391: 9.</p>
+<p class="small">[46]  COHAN D S, NAPELENOK S L. Air Quality Response Modeling for Decision Support [J]. Atmosphere, 2011, 2(3): 407-25.</p>
+<p class="small">[47]  LIU W, XU Z, YANG T. Health Effects of Air Pollution in China [J]. International Journal of Environmental Research and Public Health, 2018, 15(7): 1471.</p>
+<p class="small">[48]  STEWART D R, SAUNDERS E, PEREA R A, et al. Linking Air Quality and Human Health Effects Models: An Application to the Los Angeles Air Basin [J]. Environmental Health Insights, 2017, 11: 117863021773755.</p>
+<p class="small">[49]  KASSANDROS T, BAGKIS E, JOHANSSON L, et al. Machine learning-assisted dispersion modelling based on genetic algorithm-driven ensembles: An application for road dust in Helsinki [J]. Atmos Environ, 2023, 307: 12.</p>
+<p class="small">[50]  KAZEEM K O, OLAWUMI T O, OSUNSANMI T. Roles of Artificial Intelligence and Machine Learning in Enhancing Construction Processes and Sustainable Communities [J]. Buildings, 2023, 13(8): 2061.</p>
+<p class="small">[51]  LIU H, YAN G, DUAN Z, et al. Intelligent modeling strategies for forecasting air quality time series: A review [J]. Applied Soft Computing, 2021, 102.</p>
+<p class="small">[52]  MOLINA-GóMEZ N I, DíAZ-ARéVALO J L, LóPEZ-JIMéNEZ P A. Air quality and urban sustainable development: the application of machine learning tools [J]. International Journal of Environmental Science and Technology, 2021, 18(4): 1029-46.</p>
+<p class="small">[53]  CHEN H-S, TAM K-I, ZHAO Y-L, et al. Development of Environmental Action Plans for Adaptation to Climate Change: A Perspective of Air Quality Management [J]. Aerosol and Air Quality Research, 2023, 23(10): 220377.</p>
+<p class="small">[54]  CHANG J C, HANNA S R. Air quality model performance evaluation [J]. Meteorol Atmos Phys, 2004, 87(1-3): 167-96.</p>
+<p class="small">[55]  JOLLIFF J K, KINDLE J C, SHULMAN I, et al. Summary diagrams for coupled hydrodynamic-ecosystem model skill assessment [J]. Journal of Marine Systems, 2009, 76(1): 64-82.</p>
+<p class="small">[56]  DENNIS R, FOX T, FUENTES M, et al. A framework for evaluating regional-scale numerical photochemical modeling systems [J]. Environmental Fluid Mechanics, 2010, 10(4): 471-89.</p>
+<p class="small">[57]  THUNIS P, CLAPPIER A. Indicators to support the dynamic evaluation of air quality models [J]. Atmos Environ, 2014, 98: 402-9.</p>
+<p class="small">[58]  HENNEMAN L R F, LIU C, HU Y, et al. Air quality modeling for accountability research: Operational, dynamic, and diagnostic evaluation [J]. Atmos Environ, 2017, 166: 551-65.</p>
 
-                <div class="table-responsive">
-                  <table class="account-table table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Date</th>
 
-                        <th scope="col">Time</th>
 
-                        <th scope="col">Description</th>
-
-                        <th scope="col">Payment Type</th>
-
-                        <th scope="col">Amount</th>
-
-                        <th scope="col">Balance</th>
-
-                        <th scope="col">Status</th>
-
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      <tr>
-                        <td scope="row">July 5, 2023</td>
-
-                        <td scope="row">10:00 PM</td>
-
-                        <td scope="row">Shopping</td>
-
-                        <td scope="row">C2C Transfer</td>
-
-                        <td class="text-danger" scope="row">
-                          <span class="me-1">-</span>
-                          $100.00
-                        </td>
-
-                        <td scope="row">$5,500.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-danger">
-                            Pending
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">July 2, 2023</td>
-
-                        <td scope="row">10:42 AM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-success" scope="row">
-                          <span class="me-1">+</span>
-                          $250
-                        </td>
-
-                        <td scope="row">$5,600.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-success">
-                            Success
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">June 28, 2023</td>
-
-                        <td scope="row">8:20 PM</td>
-
-                        <td scope="row">Billing</td>
-
-                        <td scope="row">Goverment</td>
-
-                        <td class="text-success" scope="row">
-                        <span class="me-2">+</span>$50</td>
-
-                        <td scope="row">$5,350.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-success">
-                            Success
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">June 24, 2023</td>
-
-                        <td scope="row">10:48 PM</td>
-
-                        <td scope="row">Shopee</td>
-
-                        <td scope="row">QR Code</td>
-
-                        <td class="text-danger" scope="row">
-                        <span class="me-2">-</span>$380</td>
-
-                        <td scope="row">$5,300.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-dark">
-                            Cancelled
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">June 12, 2023</td>
-
-                        <td scope="row">12:30 AM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-success" scope="row">
-                        <span class="me-2">+</span>$250</td>
-
-                        <td scope="row">$4,920.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-success">
-                            Success
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">May 31, 2023</td>
-
-                        <td scope="row">2:40 PM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-success" scope="row">
-                        <span class="me-2">+</span>$50</td>
-
-                        <td scope="row">$4,920.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-success">
-                            Success
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">May 22, 2023</td>
-
-                        <td scope="row">8:50 AM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-success" scope="row">
-                        <span class="me-2">+</span>$50</td>
-
-                        <td scope="row">$4,920.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-success">
-                            Success
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">May 20, 2023</td>
-
-                        <td scope="row">6:45 PM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-danger" scope="row">
-                        <span class="me-2">-</span>$500</td>
-
-                        <td scope="row">$4,920.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-danger">
-                            Pending
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">April 28, 2023</td>
-
-                        <td scope="row">11:20 AM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-success" scope="row">
-                        <span class="me-2">+</span>$856</td>
-
-                        <td scope="row">$4,920.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-success">
-                            Success
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">April 16, 2023</td>
-
-                        <td scope="row">11:00 PM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-success" scope="row">
-                        <span class="me-2">+</span>$50</td>
-
-                        <td scope="row">$4,920.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-danger">
-                            Pending
-                          </span>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <h5 class="mt-4 mb-4">About Environmental Sci & Engn 环境科学与工程类</h5>
-
-                <div class="table-responsive">
-                  <table class="account-table table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Date</th>
-
-                        <th scope="col">Time</th>
-
-                        <th scope="col">Description</th>
-
-                        <th scope="col">Payment Type</th>
-
-                        <th scope="col">Amount</th>
-
-                        <th scope="col">Balance</th>
-
-                        <th scope="col">Status</th>
-
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      <tr>
-                        <td scope="row">July 5, 2023</td>
-
-                        <td scope="row">10:00 PM</td>
-
-                        <td scope="row">Shopping</td>
-
-                        <td scope="row">C2C Transfer</td>
-
-                        <td class="text-danger" scope="row">
-                          <span class="me-1">-</span>
-                          $100.00
-                        </td>
-
-                        <td scope="row">$5,500.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-danger">
-                            Pending
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">July 2, 2023</td>
-
-                        <td scope="row">10:42 AM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-success" scope="row">
-                          <span class="me-1">+</span>
-                          $250
-                        </td>
-
-                        <td scope="row">$5,600.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-success">
-                            Success
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">June 28, 2023</td>
-
-                        <td scope="row">8:20 PM</td>
-
-                        <td scope="row">Billing</td>
-
-                        <td scope="row">Goverment</td>
-
-                        <td class="text-success" scope="row">
-                        <span class="me-2">+</span>$50</td>
-
-                        <td scope="row">$5,350.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-success">
-                            Success
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">June 24, 2023</td>
-
-                        <td scope="row">10:48 PM</td>
-
-                        <td scope="row">Shopee</td>
-
-                        <td scope="row">QR Code</td>
-
-                        <td class="text-danger" scope="row">
-                        <span class="me-2">-</span>$380</td>
-
-                        <td scope="row">$5,300.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-dark">
-                            Cancelled
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">June 12, 2023</td>
-
-                        <td scope="row">12:30 AM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-success" scope="row">
-                        <span class="me-2">+</span>$250</td>
-
-                        <td scope="row">$4,920.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-success">
-                            Success
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">May 31, 2023</td>
-
-                        <td scope="row">2:40 PM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-success" scope="row">
-                        <span class="me-2">+</span>$50</td>
-
-                        <td scope="row">$4,920.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-success">
-                            Success
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">May 22, 2023</td>
-
-                        <td scope="row">8:50 AM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-success" scope="row">
-                        <span class="me-2">+</span>$50</td>
-
-                        <td scope="row">$4,920.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-success">
-                            Success
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">May 20, 2023</td>
-
-                        <td scope="row">6:45 PM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-danger" scope="row">
-                        <span class="me-2">-</span>$500</td>
-
-                        <td scope="row">$4,920.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-danger">
-                            Pending
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">April 28, 2023</td>
-
-                        <td scope="row">11:20 AM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-success" scope="row">
-                        <span class="me-2">+</span>$856</td>
-
-                        <td scope="row">$4,920.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-success">
-                            Success
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td scope="row">April 16, 2023</td>
-
-                        <td scope="row">11:00 PM</td>
-
-                        <td scope="row">Food Delivery</td>
-
-                        <td scope="row">Mobile Reload</td>
-
-                        <td class="text-success" scope="row">
-                        <span class="me-2">+</span>$50</td>
-
-                        <td scope="row">$4,920.00</td>
-
-                        <td scope="row">
-                          <span class="badge text-bg-danger">
-                            Pending
-                          </span>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
 
               </div>
             </div>
