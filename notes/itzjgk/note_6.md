@@ -283,7 +283,7 @@ if __name__ == '__main__':
 
 但是，上面的 HTML 的内容更像一个纸质展板，一旦代码确定不再改动，呈现出的内容也将没有任何变化。
 
-```html
+```jinja2
 <!DOCTYPE html>
 <html>
 <head>
@@ -326,13 +326,13 @@ if __name__ == '__main__':
 
 2. 控制结构 `{% %}`
 - `{% if %}` 条件判断：
-  ```html
+  ```jinja2
   {% if show_lorem %}{{ lorem_text }}{% else %}欢迎来到我的网站！{% endif %}
   ```
   根据`show_lorem`的真假显示不同内容
 
 - `{% for %}` 循环：
-  ```html
+  ```jinja2
   {% for item in items %}
   <li>{{ item }}</li>
   {% endfor %}
@@ -370,7 +370,7 @@ project/
 ```
 
 **1. 控制页面模板（templates/device_control.html）**
-```html
+```jinja2
 <!DOCTYPE html>
 <html>
 <head>
