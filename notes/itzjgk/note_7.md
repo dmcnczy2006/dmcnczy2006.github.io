@@ -19,7 +19,6 @@
 这种命令就是 **SQL（结构化查询语言）**，它是专门用来操作数据库的编程语言。通过 SQL 语言，我们可以精确地控制数据库中的每一个操作。
 
 
-
 ```sql
 -- 创建带智能校验的用户表
 CREATE TABLE IF NOT EXISTS users (
@@ -34,9 +33,11 @@ CREATE TABLE IF NOT EXISTS users (
 
 信息系统框图中，读取和写入数据库是由**服务器**来执行的。所以，数据库的搭建程序应该写在服务器中，和提供网络服务的程序写在一起。
 
-我们使用 Python 内置的 `sqlite3` 标准库实现用 Python 搭建并控制信息系统中的数据库。
+我们使用 Python 内置的 `sqlite3` 标准库实现用 Python 搭建并控制信息系统中的数据库。**`sqlite3` 中操作数据库的 Python 函数的调用顺序在考试中尤为重要**。
 
 ```python
+import sqlite3
+
 # 连接数据库（若不存在则自动创建）
 conn = sqlite3.connect('example.db')
 cursor = conn.cursor()
