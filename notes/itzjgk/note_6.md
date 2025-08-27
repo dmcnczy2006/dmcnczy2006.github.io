@@ -289,6 +289,7 @@ if __name__ == '__main__':
 但是，上面的 HTML 的内容更像一个纸质展板，一旦代码确定不再改动，呈现出的内容也将没有任何变化。
 
 ```jinja2
+{% raw %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -320,6 +321,7 @@ if __name__ == '__main__':
 
 </body>
 </html>
+{% endraw %}
 ```
 
 上面代码中，**Jinja2 模板引擎新增内容**有
