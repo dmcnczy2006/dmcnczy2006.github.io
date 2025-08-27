@@ -1,8 +1,3 @@
----
-layout: default
-render_with_liquid: false
----
-
 # 6 信息系统与应用（上）
 
 高考考察的内容和形式都在不断变化，但信息系统与应用始终是其中的重难点。现实世界中，通信、电力、金融等基础性系统都由信息系统支撑，因此学习信息系统相关的理论和实践对我们来说是非常重要的。高二的“信息系统搭建”实践活动是一次非常好的机会，有助于加深对信息系统搭建的理解，从而更轻松地应对考试。
@@ -331,6 +326,8 @@ if __name__ == '__main__':
 - `{{ main_heading }}`: 动态显示主标题
 - `{{ image_url }}`: 动态设置图片地址
 
+{% raw %}
+
 2. 控制结构 `{% %}`
 - `{% if %}` 条件判断：
   ```jinja2
@@ -349,6 +346,8 @@ if __name__ == '__main__':
 3. 过滤器 `|`
 - `{{ description|default("默认描述") }}`
   如果`description`不存在，就显示"默认描述"
+
+{% endraw %}
 
 Jinja2 的特点
 
@@ -378,6 +377,7 @@ project/
 
 **1. 控制页面模板（templates/device_control.html）**
 ```jinja2
+{% raw %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -402,6 +402,7 @@ project/
     <img src="{{ url_for('static', filename='room_layout.png') }}">
 </body>
 </html>
+{% endraw %}
 ```
 
 **2. 样式文件（static/style.css）**
