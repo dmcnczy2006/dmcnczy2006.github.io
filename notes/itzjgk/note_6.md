@@ -49,7 +49,7 @@
    **答案：B、C**（5G 模块负责终端与服务器的双向通信，故障将中断数据传输和控制信号）  
 
 - **故障定位逻辑**：  
-   - 紧扣**箭头方向**（第 1 小题给出的数据流路径），如 5G 模块故障直接影响终端与服务器的通信。  
+   - 紧扣**箭头方向**（第 1 小题给出的数据流路径），如 5G 模块用于终端与服务器的通信。  
    - 分层排查思想：物理层（传感器、5G 模块）→ 数据层（中位数计算）→ 应用层（服务器告警）。  
 
 ---
@@ -281,10 +281,25 @@ if __name__ == '__main__':
 
 这个页面展示了 HTML 的基本结构和常用标签，适合初学者理解网页是如何构建的。大家也可以使用浏览器打开一个网页，**按下 `Ctrl + U` 查看这个网页的 HTML 源代码。**
 
-但是，上面的 HTML 的内容更像一个纸质展板，一旦代码确定不再改动，呈现出的内容也将没有任何变化。
+但是，上面的 HTML 的内容更像一个纸质展板，一旦代码确定不再改动，呈现出的内容也将没有任何变化。如果需要实现 Web 服务和用户的更好交互，需要**将静态页面改为动态**。这在 Flask 支撑的 Web 服务中可以用 `jinja2` 快速实现。
+
+`jinja2` 通过在原有的 HTML 文档中 **“挖空”** 来实现。例如将网页标题挖空，原有的
+
+```html
+<title>我的第一个HTML页面</title>
+```
+
+将被换成：
 
 ```jinja2
-{% raw %}
+<title>{{ page_title }}</title>
+```
+
+其中，`page_title` 是一个**变量**，它的值可以在服务器的 Python 程序中被改变，而浏览器上显示的就是变量的值。
+
+当然，`jinja2` 还提供了**选择结构**和**循环结构**，可以应用在显示用户是否登录、实时绘制表格等方面。具体见下方代码：
+
+```jinja2
 <!DOCTYPE html>
 <html>
 <head>
@@ -316,17 +331,15 @@ if __name__ == '__main__':
 
 </body>
 </html>
-{% endraw %}
 ```
 
-上面代码中，**Jinja2 模板引擎新增内容**有
+上面代码中，**Jinja2 模板引擎新增内容**有：
 
 1. 变量输出 `{{ }}`
 - `{{ page_title }}`: 动态显示页面标题
 - `{{ main_heading }}`: 动态显示主标题
 - `{{ image_url }}`: 动态设置图片地址
 
-{% raw %}
 
 2. 控制结构 `{% %}`
 - `{% if %}` 条件判断：
@@ -347,27 +360,16 @@ if __name__ == '__main__':
 - `{{ description|default("默认描述") }}`
   如果`description`不存在，就显示"默认描述"
 
-{% endraw %}
+上面代码中的 `{{变量}}` 是服务器传来的数据，在服务器端编写运行的 `flask` 程序通过 `render_template()` 中的参数提供这些变量的实际值。具体实现方法可见下方的示例。
 
-Jinja2 的特点
+### 6.3.3 简单的 `flask` + `HTML` + `jinja2` 服务示例
 
-1. **动态内容**：用`{{变量}}`插入服务器传来的数据
-2. **逻辑控制**：可以用if/for等编程结构
-3. **模板继承**：创建基础模板，其他页面可以继承并覆盖特定部分
-4. **代码复用**：通过`include`重复使用模板片段
-5. **过滤器**：对变量进行简单处理（如格式化、截断等）
-
-为什么这样结合？
-
-- **保持HTML简洁**：依然使用基本的HTML标签
-- **添加动态能力**：通过Jinja2实现内容动态化
-- **易于维护**：把数据和表现分离，修改更方便
-
-这个模板需要配合 `flask` 使用，`flask` 会提供这些变量的实际值。
+下面给出一个简单的“室内物联网设备控制系统”服务器提供的 Web 服务代码。
 
 **文件结构**
+
 ```
-project/
+my_system/
 ├── templates/
 │   └── device_control.html
 ├── static/
@@ -376,8 +378,8 @@ project/
 ```
 
 **1. 控制页面模板（templates/device_control.html）**
+
 ```jinja2
-{% raw %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -402,7 +404,6 @@ project/
     <img src="{{ url_for('static', filename='room_layout.png') }}">
 </body>
 </html>
-{% endraw %}
 ```
 
 **2. 样式文件（static/style.css）**
@@ -438,14 +439,110 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-模板引擎特性：
-- `{{ 变量 }}` 实现数据绑定，类似显示屏的像素填充
-- `{% if %}` 实现条件渲染，如同根据库存显示不同商品灯效
-- `| upper` 过滤器格式化数据，类似显示屏的亮度调节
+### 6.3.4 两种数据输入方式：`GET` 和 `POST`
 
-### 6.3.3 两种数据输入方式：`GET` 和 `POST`
+在Web应用中，用户需要向服务器提交信息（如用户名、密码、搜索关键词等）。这些信息通过**表单**来收集和传输。表单就像现实生活中的调查问卷，包含各种输入框、选择框和提交按钮。用户在表单中填写信息后点击提交，浏览器就会将这些信息发送给服务器。
 
-数据交互如同自动售货机的投币口（GET）与密码键盘（POST），以下示例实现用户登录系统：
+表单有**两种提交方式：GET 和 POST**：
+
+1. **GET方式**：像在地址栏直接输入网址一样，所有信息都显示在URL中
+   - 适合：搜索、查看页面等不敏感操作
+   - 特点：信息可见，有长度限制
+
+2. **POST方式**：像填写保密文件一样，信息不会显示在地址栏
+   - 适合：登录、注册、上传文件等敏感操作  
+   - 特点：信息不可见，更安全
+
+用户填写表单值服务器的逻辑是：**网页前端填写表单，`flask` 后端获取数据**。
+
+前端HTML表单示例：
+```html
+<!-- GET方式表单 -->
+<form method="get" action="/search">
+    <input type="text" name="keyword" placeholder="请输入搜索关键词">
+    <button type="submit">搜索</button>
+</form>
+
+<!-- POST方式表单 -->
+<form method="post" action="/login">
+    <input type="text" name="username" placeholder="用户名">
+    <input type="password" name="password" placeholder="密码">
+    <button type="submit">登录</button>
+</form>
+```
+
+后端Flask获取数据：
+```python
+from flask import Flask, request
+
+app = Flask(__name__)
+
+# 处理GET请求（搜索功能）
+@app.route('/search')
+def search():
+    keyword = request.args.get('keyword', '')  # 从URL参数获取
+    return f"正在搜索：{keyword}"
+
+# 处理POST请求（登录功能）  
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')  # 从表单数据获取
+        password = request.form.get('password')
+        return f"用户 {username} 正在登录..."
+    
+    # GET请求返回登录表单页面
+    return "请填写登录表单"
+```
+
+下面详细讲解关于 GET 的一些细节。用户在网页上填写 GET 方式表单，按下“提交”键后，就**向服务器提供了一个 GET 请求**。
+
+**GET 请求**是一个 **URL**。这个 URL 就像快递单号，包含了所有必要的信息。让我们分解一个典型的 GET 请求 URL：
+
+```
+http://www.example.com/search?keyword=空调&category=家电&page=1
+```
+
+- **URL组成部分：**
+    - **协议**：`http://` - 传输协议
+    - **域名**：`www.example.com` - 服务器地址
+    - **路径**：`/search` - 具体的功能页面
+    - **查询参数**：`?keyword=空调&category=家电&page=1` - 用户提交的数据
+
+* **查询参数格式：**
+    - 以 `?` 开始
+    - 多个参数用 `&` 连接
+    - 每个参数格式：`参数名=参数值`
+
+在 Web 服务提供的表单中填写相关信息后提交，和直接在浏览器输入 `http://www.example.com/search?keyword=空调&category=家电&page=1` 是完全相同的。
+
+常见GET请求示例：
+
+- 1. **搜索功能**
+    ```
+    /search?q=手机&brand=苹果&price=5000
+    ```
+    （搜索关键词"手机"，品牌"苹果"，价格"5000"）
+
+* 2. **分页浏览**
+    ```
+    /products?page=2&size=20&sort=price
+    ```
+    第2页，每页20条，按价格排序
+
+- 3. **筛选条件**
+    ```
+    /hotels?city=北京&checkin=2024-01-01&checkout=2024-01-03
+    ```
+    北京酒店，入住2024年1月1日，退房1月3日
+
+**实际应用场景：**
+- 搜索框：使用GET，用户输入"空调"后，URL变成 `/search?keyword=空调`
+- 登录页面：使用POST，用户输入用户名密码后，信息安全传输到服务器
+- 商品筛选：使用GET，用户选择条件后，URL包含所有筛选参数
+- 新闻浏览：使用GET，用户点击分页按钮，URL显示当前页码
+
+下面再给出一个用 POST 方式实现的的用户登录系统示例：
 
 **文件：app_form.py**
 ```python
@@ -481,68 +578,54 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-测试方法：
-1. GET请求测试：访问 `http://localhost:5000/search?q=空调`
-2. POST请求测试：访问 `http://localhost:5000/login` 提交表单
+### 6.3.5 用户登录
 
-安全实践：
-- 密码等敏感信息必须使用POST方法
-- 真实项目需添加CSRF保护（如使用Flask-WTF）
-- 使用HTTPS加密数据传输
+在 Flask 框架中实现登录功能，本质是通过**会话机制**维护用户状态。我们通过账密登录、会话 ID 和数据库交互（这里只运用到基本的数据库操作，对于数据库操作的详解请见 **第 7 节**）来构建完整流程。
 
-（代码示例均经过实际运行验证，建议配合注释中的文件结构创建对应目录与文件，形成完整可运行的教学案例）
+会话机制就像去银行办业务，拿到一张**专属号码牌**。详细来说，当某位用户登录网站时，服务器会创建一个“**会话**”（Session），记录用户的登录状态等信息，并生成一个唯一的“**会话 ID**”。同时，服务器会把这个 ID 通过一个叫 **Cookie** 的小文件，存到该用户的浏览器里。接下来，在用户浏览网站的每一步操作中，浏览器都会自动出示这个“号码牌”（会话 ID），服务器通过它就能认出已经登录的用户，无需反复输入密码，直到点击“退出登录”或关闭浏览器。
 
-### 6.3.4 用户登录
+`flask` 内置了会话管理功能，它通过 `session` 对象实现。在 Python 代码上看，这个过程就像在服务器维护一个 Python 字典，用户登录时添加关于该用户的键值对，退出登录时删除，判断用户是否登录则调用表达式 `element in dic` 。实际上，用户认证成功后，系统将用户名存入 `session` 字典，浏览器会自动保存加密后的 Cookie。后续请求中通过检查 `session` 是否存在用户标识来判断登录状态。
 
-在 Flask 框架中实现原生登录功能，本质是通过会话机制维护用户状态。我们通过手动处理密码哈希、会话 ID 和数据库交互（这里只运用到基本的数据库操作，对于数据库操作的详解请见 **第 7 节**）来构建完整流程。
+具体实现代码如下。
 
 ```python
 from flask import Flask, request, redirect, session, render_template_string
 import sqlite3
-import hashlib
 import secrets
 
 app = Flask(__name__)
-app.secret_key = secrets.token_hex(32)  # 生产环境应使用固定密钥
+app.secret_key = secrets.token_hex(32)  # 密钥，越复杂越好
 
 # 简易用户表结构
 def init_db():
-    with sqlite3.connect('users.db') as conn:
-        conn.execute('''CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY,
-            username TEXT UNIQUE,
-            password_hash TEXT
-        )''')
-
-# 密码哈希生成（加盐处理）
-def create_password_hash(password):
-    salt = secrets.token_bytes(16)
-    hash_obj = hashlib.pbkdf2_hmac('sha256', password.encode(), salt, 100000)
-    return salt.hex() + hash_obj.hex()
-
-# 密码验证逻辑
-def verify_password(stored_hash, input_password):
-    salt = bytes.fromhex(stored_hash[:32])  # 提取存储的盐值
-    original_hash = stored_hash[32:]
-    new_hash = hashlib.pbkdf2_hmac('sha256', input_password.encode(), salt, 100000)
-    return new_hash.hex() == original_hash
+    conn = sqlite3.connect('users.db')
+    conn.execute('''CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY,
+        username TEXT UNIQUE,
+        password TEXT
+    )''')
+    conn.close()
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        # 获取用户输入的用户名和口令
+        username = request.form.get('username')
+        password = request.form.get('password')
 
-        with sqlite3.connect('users.db') as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT password_hash FROM users WHERE username=?", (username,))
-            result = cursor.fetchone()
+        # 数据库操作
+        conn = sqlite3.connect('users.db')
+        cursor = conn.cursor()
+        cursor.execute("SELECT password FROM users WHERE username=?", (username,))
+        result = cursor.fetchone()
+        conn.close()
 
-            if result and verify_password(result[0], password):
-                session['user'] = username  # 建立会话状态
-                return redirect('/dashboard')
-            else:
-                return "认证失败"
+        # 认证
+        if result and result[0] == password:
+            session['user'] = username  # 建立会话状态
+            return redirect('/dashboard')
+        else:
+            return "认证失败"
     
     return render_template_string('''
         <form method="post">
@@ -568,11 +651,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-密码安全是登录系统的核心防线。`create_password_hash`函数采用PBKDF2算法进行加盐哈希，将原始密码转换为不可逆的密文存储。每个用户的盐值都是随机生成的16字节数据，确保即使两个用户使用相同密码，生成的哈希值也不同。验证时通过提取存储的盐值重新计算哈希进行比对。
-
-会话管理通过Flask内置的`session`对象实现。`app.secret_key`的设置至关重要，它用于签名会话cookie防止篡改。用户认证成功后，将用户名存入`session`字典，浏览器会自动保存加密后的cookie。后续请求中通过检查`session`是否存在用户标识来判断登录状态。
-
-路由保护采用装饰器模式，在需要登录的视图函数（如dashboard）前添加`if 'user' not in session`的条件判断。实际开发中可以将此逻辑封装成装饰器，例如：
+有时，我们的信息系统不希望让未登录的用户访问特定路由。这就是**路由保护**。路由保护可以采用装饰器模式，在需要登录的视图函数（如dashboard）体代码前添加 `if 'user' not in session` 的条件判断（它和 `if not 'user' in session` 是完全等价的）。实际开发中可以将此逻辑封装成**装饰器**，例如：
 
 ```python
 def login_required(view):

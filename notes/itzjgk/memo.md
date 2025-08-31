@@ -27,7 +27,7 @@
 ## 5. Python 应用
   (pandas, matplotlib, jieba, flask, Python for IoT)
 
-## 6~7. 信息系统与应用
+## 6~7.信息系统与应用
 
 - 信息系统理论知识
 
