@@ -8,7 +8,6 @@
   const gsap = window.gsap;
   let media;
   let mapOpener;
-  let previousOverflow = '';
 
   function updateLabels() {
     const language = root.lang === 'en' ? 'en' : 'zh';
@@ -24,9 +23,7 @@
   function openMap() {
     if (!map || map.open || typeof map.showModal !== 'function') return;
     mapOpener = document.activeElement;
-    previousOverflow = root.style.overflow;
     map.showModal();
-    root.style.overflow = 'hidden';
     if (gsap && !reduceMotion.matches) {
       gsap.fromTo(map, { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: .25, clearProps: 'transform,opacity' });
     }
@@ -36,8 +33,7 @@
   document.querySelector('.map-close')?.addEventListener('click', closeMap);
   map?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMap));
   map?.addEventListener('close', () => {
-    root.style.overflow = previousOverflow;
-    if (mapOpener?.isConnected) mapOpener.focus({ preventScroll: true });
+    if (!map.open && mapOpener?.isConnected) mapOpener.focus({ preventScroll: true });
   });
   map?.addEventListener('click', event => {
     if (event.target !== map) return;
