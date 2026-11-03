@@ -2,69 +2,95 @@
   'use strict';
   const root = document.documentElement;
   const languageButtons = [...document.querySelectorAll('[data-set-language]')];
-  const menuButton = document.querySelector('.menu-toggle');
-  const sidebar = document.querySelector('.sidebar');
+  const map = document.querySelector('#site-map');
+  const mapTrigger = document.querySelector('.map-trigger');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const mobile = window.matchMedia('(max-width: 800px)');
+  const gsap = window.gsap;
+  let media;
+  let mapOpener;
+  let previousOverflow = '';
 
   function updateLabels() {
     const language = root.lang === 'en' ? 'en' : 'zh';
-    document.title = document.body.dataset[`title${language === 'en' ? 'En' : 'Zh'}`];
+    document.title = document.body.dataset[language === 'en' ? 'titleEn' : 'titleZh'];
     const description = document.querySelector('meta[name="description"]');
     description.content = description.dataset[language];
     languageButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.setLanguage === language)));
     document.querySelectorAll('[data-label-zh]').forEach(element => {
       element.setAttribute('aria-label', element.dataset[language === 'en' ? 'labelEn' : 'labelZh']);
     });
-    menuButton?.setAttribute('aria-label', language === 'zh'
-      ? (menuButton.getAttribute('aria-expanded') === 'true' ? '收起导航' : '展开导航')
-      : (menuButton.getAttribute('aria-expanded') === 'true' ? 'Close navigation' : 'Open navigation'));
   }
 
-  function closeMenu() {
-    sidebar?.classList.remove('is-open');
-    menuButton?.setAttribute('aria-expanded', 'false');
-    updateLabels();
+  function openMap() {
+    if (!map || map.open || typeof map.showModal !== 'function') return;
+    mapOpener = document.activeElement;
+    previousOverflow = root.style.overflow;
+    map.showModal();
+    root.style.overflow = 'hidden';
+    if (gsap && !reduceMotion.matches) {
+      gsap.fromTo(map, { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: .25, clearProps: 'transform,opacity' });
+    }
   }
-  menuButton?.addEventListener('click', () => {
-    const open = menuButton.getAttribute('aria-expanded') !== 'true';
-    menuButton.setAttribute('aria-expanded', String(open));
-    sidebar.classList.toggle('is-open', open);
-    updateLabels();
+  function closeMap() { if (map?.open) map.close(); }
+  mapTrigger?.addEventListener('click', openMap);
+  document.querySelector('.map-close')?.addEventListener('click', closeMap);
+  map?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMap));
+  map?.addEventListener('close', () => {
+    root.style.overflow = previousOverflow;
+    if (mapOpener?.isConnected) mapOpener.focus({ preventScroll: true });
+  });
+  map?.addEventListener('click', event => {
+    if (event.target !== map) return;
+    const bounds = map.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) closeMap();
   });
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && sidebar?.classList.contains('is-open')) {
-      closeMenu();
-      menuButton.focus();
+    const editing = event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable="true"]');
+    if (event.key === '/' && !editing && !event.ctrlKey && !event.metaKey && !event.altKey && !event.repeat) {
+      event.preventDefault();
+      openMap();
     }
   });
-  document.addEventListener('click', event => {
-    if (sidebar?.classList.contains('is-open') && !sidebar.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
-  });
-  mobile.addEventListener('change', closeMenu);
 
-  const gsap = window.gsap;
-  let media;
+  // The route dock remains ordinary links, including when JavaScript is unavailable.
+  let progressFrame = 0;
+  function updateProgress() {
+    progressFrame = 0;
+    const max = root.scrollHeight - root.clientHeight;
+    const progress = max > 0 ? Math.max(0, Math.min(1, window.scrollY / max)) : 0;
+    root.style.setProperty('--read-progress', progress.toFixed(4));
+  }
+  function requestProgress() {
+    if (!progressFrame) progressFrame = requestAnimationFrame(updateProgress);
+  }
+  window.addEventListener('scroll', requestProgress, { passive: true });
+  window.addEventListener('resize', requestProgress, { passive: true });
+  window.addEventListener('pageshow', requestProgress);
+
   function animatePage(runEntrance = true) {
     if (!gsap || !window.ScrollTrigger) return;
     gsap.registerPlugin(window.ScrollTrigger);
     media = gsap.matchMedia();
     media.add({ motion: '(prefers-reduced-motion: no-preference)', desktop: '(min-width: 801px)' }, context => {
       if (!context.conditions.motion) return;
-      const distance = context.conditions.desktop ? 24 : 12;
-      const entrance = [...document.querySelectorAll('[data-entrance]')].filter(element => element.getClientRects().length);
-      if (runEntrance) gsap.from(entrance, { y: distance, opacity: 0, duration: .65, stagger: .1, ease: 'power2.out', clearProps: 'transform,opacity' });
+      const distance = context.conditions.desktop ? 26 : 14;
+      if (runEntrance) {
+        const entrance = [...document.querySelectorAll('[data-entrance]')].filter(element => element.getClientRects().length);
+        gsap.from(entrance, { y: distance, opacity: 0, duration: .8, stagger: .1, ease: 'power3.out', clearProps: 'transform,opacity' });
+      }
       document.querySelectorAll('[data-reveal]').forEach(element => {
-        // Animate only on entry. Never hide offscreen content while it awaits scrolling.
-        window.ScrollTrigger.create({ trigger: element, start: 'top 92%', once: true, onEnter: () => {
-          gsap.from(element, { y: distance * .75, opacity: 0, duration: .5, ease: 'power2.out', clearProps: 'transform,opacity' });
+        window.ScrollTrigger.create({ trigger: element, start: 'top 94%', once: true, onEnter: () => {
+          gsap.from(element, { y: distance * .7, opacity: 0, duration: .65, ease: 'power2.out', clearProps: 'transform,opacity' });
           const title = element.querySelector('.section-title');
-          if (title) gsap.fromTo(title, { '--rule-scale': 0 }, { '--rule-scale': 1, duration: .65 });
+          if (title) gsap.fromTo(title, { '--rule-scale': 0 }, { '--rule-scale': 1, duration: .7 });
         } });
       });
-      if (context.conditions.desktop && document.querySelector('.hero-art')) {
-        gsap.fromTo('.hero-art', { y: 0 }, { y: 38, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .6 } });
-        if (runEntrance) gsap.from('.flow-line', { strokeDashoffset: 1000, strokeDasharray: 1000, duration: 2.1, stagger: .06, ease: 'power2.out' });
+      const scene = document.querySelector('.orbit-scene');
+      if (scene && context.conditions.desktop) {
+        const spin = gsap.to('.orbit-spinner', { rotation: 360, duration: 75, repeat: -1, ease: 'none' });
+        window.ScrollTrigger.create({ trigger: scene, start: 'top bottom', end: 'bottom top', onToggle: self => spin.paused(!self.isActive) });
+        gsap.to('.orbit-svg', { y: -24, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .7 } });
+        if (runEntrance) gsap.from('.orbit-track', { opacity: 0, duration: 1.5, delay: .4, clearProps: 'opacity' });
       }
     });
   }
@@ -72,36 +98,28 @@
   languageButtons.forEach(button => button.addEventListener('click', () => {
     const language = button.dataset.setLanguage;
     if ((root.lang === 'en' ? 'en' : 'zh') === language) return;
-    // Revert active animation styles before changing text or remeasuring the page.
     media?.revert();
     root.lang = language === 'zh' ? 'zh-CN' : 'en';
-    try { localStorage.setItem('dmcnczy-language', language); } catch (_) { /* Keep switching usable. */ }
+    try { localStorage.setItem('dmcnczy-language', language); } catch (_) { /* Storage can be disabled. */ }
     updateLabels();
     animatePage(false);
     if (gsap && !reduceMotion.matches) {
-      gsap.fromTo('.main', { opacity: .5 }, { opacity: 1, duration: .22, clearProps: 'opacity' });
+      gsap.fromTo('.main', { opacity: .55 }, { opacity: 1, duration: .22, clearProps: 'opacity' });
     }
-    // Avoid replaying entrance animations when switching languages.
     window.ScrollTrigger?.refresh();
+    requestProgress();
   }));
 
-  document.querySelectorAll('.quick-card').forEach(card => {
-    function lift(raised) {
-      if (!gsap || reduceMotion.matches || !window.matchMedia('(hover: hover)').matches) return;
-      gsap.to(card, { y: raised ? -5 : 0, duration: .22, overwrite: 'auto', ease: 'power2.out' });
-      gsap.to(card.querySelector('.icon'), { scale: raised ? 1.09 : 1, duration: .22, overwrite: 'auto' });
-    }
-    card.addEventListener('pointerenter', () => lift(true));
-    card.addEventListener('pointerleave', () => lift(false));
-    card.addEventListener('focus', () => lift(true));
-    card.addEventListener('blur', () => lift(false));
-  });
   reduceMotion.addEventListener('change', () => {
     if (!gsap) return;
-    gsap.killTweensOf('.quick-card, .quick-card .icon, .main');
-    gsap.set('.quick-card, .quick-card .icon, .main', { clearProps: 'transform,opacity' });
+    gsap.killTweensOf('.main, .site-map');
+    gsap.set('.main, .site-map', { clearProps: 'transform,opacity' });
   });
   updateLabels();
-  if (gsap && window.ScrollTrigger) animatePage();
-  document.fonts?.ready.then(() => window.ScrollTrigger?.refresh());
+  animatePage();
+  updateProgress();
+  document.fonts?.ready.then(() => {
+    window.ScrollTrigger?.refresh();
+    requestProgress();
+  });
 })();
